@@ -369,7 +369,6 @@ void viewTrains() {
             int pad = 9 - strlen(classRules[c].name);
             for (int j = 0; j < pad; j++) { cout << " "; }
             cout << " | " << t[i].cls[c].available << "/" << t[i].cls[c].seats;
-            // FIX 4: Missing semicolon at end of this line in original
             int np = 10 - (int)to_string(t[i].cls[c].available).length()
                        - (int)to_string(t[i].cls[c].seats).length();
             for (int j = 0; j < np; j++) { cout << " "; }
