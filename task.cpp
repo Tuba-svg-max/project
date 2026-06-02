@@ -30,7 +30,6 @@ struct TrainClass {
     float fare;
 };
 
-// FIX 1: Missing semicolon after closing brace of struct Train
 struct Train {
     char       id[10];
     char       name[30];
@@ -42,18 +41,16 @@ struct Train {
     TrainClass cls[CLASS_COUNT];
 };
 
-// FIX 2: struct Passenger had a stray semicolon after the name ("struct Passenger;")
 struct Passenger {
     char id[10];
     char name[30];
 };
 
-// FIX 3: Booking struct had stray unquoted text outside a comment after classIdx line
 struct Booking {
     char id[10];
     char pid[10];
     char tid[10];
-    int  classIdx; // which class was booked (0-3); classIdx is assigned number of class, ci is given classIdx value
+    int  classIdx; 
     int  seat;
 };
 
@@ -636,7 +633,6 @@ void bookTicketManager() {
     cout << "  Select class (1-4): ";
     int ci = getValidChoice(1, 4) - 1;
 
-    // FIX 5: String literals split across lines — joined onto one line
     if (t[ti].cls[ci].seats     == 0) { cout << "  Class not on this train!\n"; return; }
     if (t[ti].cls[ci].available <= 0) { cout << "  No seats left!\n"; return; }
 
@@ -790,7 +786,7 @@ void passengerMenu() {
 
             int seatNo;
             while (true) {
-                // FIX 5 (continued): String literal was split across source lines
+                
                 cout << "  Seat No (1-" << t[ti].cls[ci].seats << "): ";
                 cin >> seatNo;
                 if (seatNo < 1 || seatNo > t[ti].cls[ci].seats) {
@@ -803,7 +799,7 @@ void passengerMenu() {
                         b[i].seat     == seatNo) { taken = true; break; }
                 }
                 if (taken) {
-                    // FIX 5 (continued): String literal was split across source lines
+                    
                     cout << "  Seat " << seatNo << " already booked! Choose another.\n";
                     continue;
                 }
